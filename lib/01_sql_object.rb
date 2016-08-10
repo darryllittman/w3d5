@@ -32,6 +32,8 @@ class SQLObject
   end
 
   def self.table_name=(table_name)
+
+    @table_name ||= table_name.capitalize[0..-2]
     # ...
   end
 
