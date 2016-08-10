@@ -6,7 +6,10 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+<<<<<<< HEAD
     byebug (9.0.5)
+=======
+>>>>>>> abf7e64d762e2eeb5052193d466fb832e36e3903
     concurrent-ruby (1.0.2)
     diff-lcs (1.2.5)
     i18n (0.7.0)
@@ -33,7 +36,10 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+<<<<<<< HEAD
   byebug
+=======
+>>>>>>> abf7e64d762e2eeb5052193d466fb832e36e3903
   rspec (~> 3.1.0)
   sqlite3
 

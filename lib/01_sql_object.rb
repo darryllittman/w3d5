@@ -111,6 +111,7 @@ class SQLObject
     #
     # I again used the #attribute_values trick. I additionally passed in the id of the object (for the last ? in the WHERE clause).
 
+
     # att_values = "#{attribute_values}, #{attribute_values.first}"
     att_values = attribute_values << attribute_values.first
     set_line = self.class.columns.map { |el| "#{el} = ?" }.join(", ")
