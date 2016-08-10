@@ -129,6 +129,10 @@ class SQLObject
   def save
     #how to merge back with git?
     #where do I find this id?
-    # if @attributes[:id]
+    if @attributes && @attributes[:id]
+      update
+    else
+      insert
+    end
   end
 end
