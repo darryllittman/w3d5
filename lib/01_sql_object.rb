@@ -33,12 +33,12 @@ class SQLObject
 
   def self.table_name=(table_name)
 
-    @table_name ||= table_name.capitalize[0..-2]
+    @table_name = table_name
     # ...
   end
 
   def self.table_name
-    "#{self.to_s.downcase}s"
+    @table_name = "#{self.to_s.downcase}s"
   end
 
   def self.all

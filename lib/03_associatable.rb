@@ -10,23 +10,29 @@ class AssocOptions
   )
 
   def model_class
-    # ...
+    ActiveSupport::Inflector.constantize(class_name)
   end
 
   def table_name
-    # ...
+    model_class.table_name
   end
 end
 
 class BelongsToOptions < AssocOptions
   def initialize(name, options = {})
-    # ...
+    @options = options
+    @primary_key = options[:primary_key] || :id
+    @foreign_key = options[:foreign_key] || "#{name}_id".to_sym
+    @class_name = options[:class_name] || name.capitalize
   end
 end
 
 class HasManyOptions < AssocOptions
   def initialize(name, self_class_name, options = {})
-    # ...
+    @options = options
+    @primary_key = options[:primary_key] || :id
+    @foreign_key = options[:foreign_key] || "#{self_class_name.downcase}_id".to_sym
+    @class_name = options[:class_name] || name.capitalize[0..-2]
   end
 end
 
