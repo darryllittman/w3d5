@@ -10,7 +10,7 @@ class AssocOptions
   )
 
   def model_class
-    ActiveSupport::Inflector.constantize(class_name)
+    ActiveSupport::Inflector.constantize(class_name.to_s)
   end
 
   def table_name
@@ -39,11 +39,18 @@ end
 module Associatable
   # Phase IIIb
   def belongs_to(name, options = {})
-    # ...
+    options = BelongsToOptions.new(name, options)
+
+    define_method("#{name}") do
+      options.model_class
+        .where(options.primary_key => send(options.foreign_key))
+        .first
+    end
+
   end
 
   def has_many(name, options = {})
-    # ...
+    
   end
 
   def assoc_options
@@ -52,5 +59,6 @@ module Associatable
 end
 
 class SQLObject
+  extend Associatable
   # Mixin Associatable here...
 end
